@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   { path: 'customers', loadChildren: () => import('./customers/customers.module').then(m => m.CustomersModule) },
@@ -12,7 +13,8 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes, {
       preloadingStrategy: PreloadAllModules  // Preload the modules to load element before the route is requested
-    })
+    }),
+    HttpClientModule
   ],
   exports: [RouterModule]
 })
